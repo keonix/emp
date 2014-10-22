@@ -57,12 +57,12 @@ public class EmployeeRepositorySingleton {
 
 			emp.setEmail(email);
 			if (checkIsEmplty(fname, lname, email)) {
-				throw new ServletException("Заполните все поля");
+				throw new ServletException("Р—Р°РїРѕР»РЅРёС‚Рµ РІСЃРµ РїРѕР»СЏ");
 			}
 
 			// if (emp.getFname().equals("") || emp.getLname().equals("")
 			// || emp.getEmail().equals("")) {
-			// throw new ServletException("Вы не заполнили необходимые поля");
+			// throw new ServletException("Г‚Г» Г­ГҐ Г§Г ГЇГ®Г«Г­ГЁГ«ГЁ Г­ГҐГ®ГЎГµГ®Г¤ГЁГ¬Г»ГҐ ГЇГ®Г«Гї");
 			// }
 			this.employmentlist.add(emp);
 			id++;
@@ -78,8 +78,8 @@ public class EmployeeRepositorySingleton {
 		while (listIterator.hasNext()) {
 			if (listIterator.next().getEmail().equals(email)) {
 				check = true;
-				throw new IncorrectEmailException("Пользователь с"
-						+ " таким email уже введен в базу");
+				throw new IncorrectEmailException("РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ СЃ"
+						+ " С‚Р°РєРёРј email СѓР¶Рµ РІРІРµРґРµРЅ РІ Р±Р°Р·Сѓ");
 				// break;
 
 			}
