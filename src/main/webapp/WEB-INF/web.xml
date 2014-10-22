@@ -1,0 +1,25 @@
+<web-app xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+	version="3.0">
+	<display-name>Archetype Created Web Application</display-name>
+	<servlet>
+		<servlet-name>EmployeesServlet</servlet-name>
+		<jsp-file>/employee.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>EmployeesServlet</servlet-name>
+		<url-pattern>/employee</url-pattern>
+	</servlet-mapping>
+	<filter>
+    <filter-name>FormEncodingSetterFilter</filter-name>
+    <filter-class>ru.skipy.juga_ru.web.i18n_tutorial.FormEncodingSetterFilter</filter-class>
+    <init-param>
+        <param-name>encoding</param-name>
+        <param-value>UTF-8</param-value>
+    </init-param>
+</filter>
+<filter-mapping>
+    <filter-name>FormEncodingSetterFilter</filter-name>
+    <url-pattern>/i18n-tutorial/*</url-pattern>
+</filter-mapping>
+</web-app>
