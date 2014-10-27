@@ -10,16 +10,5 @@
 		<servlet-name>EmployeesServlet</servlet-name>
 		<url-pattern>/employee</url-pattern>
 	</servlet-mapping>
-	<filter>
-    <filter-name>FormEncodingSetterFilter</filter-name>
-    <filter-class>ru.skipy.juga_ru.web.i18n_tutorial.FormEncodingSetterFilter</filter-class>
-    <init-param>
-        <param-name>encoding</param-name>
-        <param-value>UTF-8</param-value>
-    </init-param>
-</filter>
-<filter-mapping>
-    <filter-name>FormEncodingSetterFilter</filter-name>
-    <url-pattern>/i18n-tutorial/*</url-pattern>
-</filter-mapping>
+	
 </web-app>
