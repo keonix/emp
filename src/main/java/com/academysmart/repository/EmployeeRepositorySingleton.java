@@ -21,10 +21,10 @@ public class EmployeeRepositorySingleton {
 	public static List<Employee> employmentlist = new LinkedList<Employee>();
 	int id = 1;
 	public static EmployeeRepositorySingleton instance;
-	static String driver;
-	static String user;
-	static String url;
-	static String password;
+	static String driver = "oracle.jdbc.driver.OracleDriver";
+	static String user ="Ladyshinskyi";
+	static String url = "jdbc:oracle:thin:@localhost:1521/xe";
+	static String password = "121234512";
 
 
 	public static void getAllEmployeeWhenStartDB() {
@@ -79,10 +79,10 @@ public class EmployeeRepositorySingleton {
 
 		// TODO implement method that adds an employee to repository
 		// This method should check that email is not used by other employees
-		user = "Ladyshinskyi";
-		String password = "121234512";
-		String url = "jdbc:oracle:thin:@localhost:1521/xe";// URL àäðåñ
-		driver = "oracle.jdbc.driver.OracleDriver";// Èìÿ äðàéâåðà
+	//	user = "Ladyshinskyi";
+//		String password = "121234512";
+	//	String url = "jdbc:oracle:thin:@localhost:1521/xe";// URL àäðåñ
+	//	driver = "oracle.jdbc.driver.OracleDriver";// Èìÿ äðàéâåðà
 		try {
 			Class.forName(driver);// Ðåãèñòðèðóåì äðàéâåð
 			Locale.setDefault(Locale.ENGLISH);

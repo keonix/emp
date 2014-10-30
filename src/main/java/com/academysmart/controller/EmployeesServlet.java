@@ -6,6 +6,8 @@ import org.omg.CORBA.RepositoryIdHelper;
 
 
 
+
+import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -19,6 +21,11 @@ import com.academysmart.repository.EmployeeRepositorySingleton;
 public class EmployeesServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
+	public void init(ServletConfig conf) throws ServletException{
+		super.init(conf);
+		EmployeeRepositorySingleton.getAllEmployeeWhenStartDB();
+		}
+	
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws IOException, ServletException {
 		//TODO implement logic to process GET requests
