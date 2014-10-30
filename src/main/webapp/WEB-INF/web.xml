@@ -2,13 +2,6 @@
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
 	version="3.0">
 	<display-name>Archetype Created Web Application</display-name>
-	<servlet>
-		<servlet-name>EmployeesServlet</servlet-name>
-		<jsp-file>/employee.jsp</jsp-file>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>EmployeesServlet</servlet-name>
-		<url-pattern>/employee</url-pattern>
-	</servlet-mapping>
+
 	
 </web-app>
