@@ -14,7 +14,7 @@
 		<legend>
 			<b>Enter you data:</b>
 		</legend>
-		<form action="employee.html" method="post">
+		<form action="index.html" method="post">
 			<!-- Create fields for new employee -->
 			<table cellspacing="0" cellpadding="2" border="0">
 				<tr>
