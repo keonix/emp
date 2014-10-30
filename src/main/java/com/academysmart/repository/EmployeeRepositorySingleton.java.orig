@@ -18,49 +18,18 @@ import com.academysmart.model.Employee;
 
 public class EmployeeRepositorySingleton {
 
-	public static List<Employee> employmentlist = new LinkedList<Employee>();
+	public List<Employee> employmentlist = new LinkedList<Employee>();
 	int id = 1;
 	public static EmployeeRepositorySingleton instance;
-	static String driver;
-	static String user;
-	static String url;
-	static String password;
 
-
-	public static void getAllEmployeeWhenStartDB() {
-		try {
-			Class.forName(driver);
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		}
-		Employee newEmployee = null;
-		Connection connect = null;
-		Statement statement = null;
-		ResultSet choiseResult = null;
-		try {
-			connect = DriverManager.getConnection(url, user, password);
-			statement = (Statement) connect.createStatement();
-			choiseResult = statement
-					.executeQuery("SELECT * FROM Employee ORDER BY id");
-			while (choiseResult.next()) {
-				newEmployee = new Employee();
-				newEmployee.setId(choiseResult.getInt("id"));
-				newEmployee.setFname(choiseResult.getString("name"));
-				newEmployee.setLname(choiseResult.getString("surname"));
-				newEmployee.setEmail(choiseResult.getString("email"));
-				employmentlist.add(newEmployee);
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				if (connect != null)
-					connect.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
-	}
+	// public EmployeeRepositorySingleton() {
+	// Employee emp = new Employee();
+	// emp.setId(0);
+	// emp.setFname("");
+	// emp.setLname("");
+	// emp.setEmail("");
+	// this.employmentlist.add(emp);
+	// }
 
 	public static EmployeeRepositorySingleton getRepository() {
 		// TODO implement method that returns repository instance
@@ -76,61 +45,61 @@ public class EmployeeRepositorySingleton {
 
 	public int addEmployee(String fname, String lname, String email)
 			throws ServletException {
-
+	
 		// TODO implement method that adds an employee to repository
 		// This method should check that email is not used by other employees
-		user = "Ladyshinskyi";
+		String user = "Ladyshinskyi";
 		String password = "121234512";
 		String url = "jdbc:oracle:thin:@localhost:1521/xe";// URL àäðåñ
-		driver = "oracle.jdbc.driver.OracleDriver";// Èìÿ äðàéâåðà
+		String driver = "oracle.jdbc.driver.OracleDriver";// Èìÿ äðàéâåðà
 		try {
-			Class.forName(driver);// Ðåãèñòðèðóåì äðàéâåð
-			Locale.setDefault(Locale.ENGLISH);
+		Class.forName(driver);// Ðåãèñòðèðóåì äðàéâåð
+		Locale.setDefault(Locale.ENGLISH); 
 		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		// TODO Auto-generated catch block
+		e.printStackTrace();
 		}
 		Connection c = null;// Ñîåäèíåíèå ñ ÁÄ
 		try {
-			c = DriverManager.getConnection(url, user, password);// Óñòàíîâêà
-			// ñîåäèíåíèÿ
-			// ñ ÁÄ
-			Statement st = (Statement) c.createStatement();// Ãîòîâèì çàïðîñ
-
-			ResultSet rs = st.executeQuery("select * from  Employee");// Âûïîëíÿåì
-			// çàïðîñ "insert into EMPLOYEES values('2', 'Olya',
-			// 'Chevychelova','chevy@ru'
-			// ê ÁÄ,
-			// ðåçóëüòàò
-			// â
-			// ïåðåìåííîé
-			// rs
-			while (rs.next()) {
-				System.out.println(rs.getString(1));
-			}
-
-			PreparedStatement preperedStatement;
-			preperedStatement = c.prepareStatement("insert into employee "
-					+ "values(?, ?, ?, ?)");
-			preperedStatement.setInt(1, id);
-			preperedStatement.setString(2, fname);
-			preperedStatement.setString(3, lname);
-			preperedStatement.setString(4, email);
-			preperedStatement.executeUpdate();
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			// Îáÿçàòåëüíî íåîáõîäèìî çàêðûòü ñîåäèíåíèå
-			try {
-				if (c != null)
-					c.close();
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+		c = DriverManager.getConnection(url, user, password);// Óñòàíîâêà
+		// ñîåäèíåíèÿ
+		// ñ ÁÄ
+		Statement st = (Statement) c.createStatement();// Ãîòîâèì çàïðîñ
+	
+		ResultSet rs = st.executeQuery("select * from  Employee");// Âûïîëíÿåì
+		// çàïðîñ "insert into EMPLOYEES values('2', 'Olya', 'Chevychelova','chevy@ru'
+		// ê ÁÄ,
+		// ðåçóëüòàò
+		// â
+		// ïåðåìåííîé
+		// rs
+		while (rs.next()) {
+		System.out.println(rs.getString(1));
 		}
-		// --------------------------------
+		
+		 PreparedStatement  preperedStatement ;
+		 preperedStatement = c.prepareStatement("insert into employee "
+				 + "values(?, ?, ?, ?)");
+				 preperedStatement.setInt(1, id);
+				 preperedStatement.setString(2, fname);
+				 preperedStatement.setString(3, lname);
+				 preperedStatement.setString(4, email);
+				 preperedStatement.executeUpdate();
+		 
+		 
+		} catch (Exception e) {
+		e.printStackTrace();
+		} finally {
+		// Îáÿçàòåëüíî íåîáõîäèìî çàêðûòü ñîåäèíåíèå
+		try {
+		if (c != null)
+		c.close();
+		} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+		}
+		}
+		//--------------------------------
 		int nextOne = 0;
 
 		if (!checkExistingEmail(employmentlist, email)
@@ -138,6 +107,7 @@ public class EmployeeRepositorySingleton {
 		) {
 			nextOne = 1;
 
+			
 			Employee emp = new Employee();
 			emp.setId(id);
 
@@ -169,8 +139,11 @@ public class EmployeeRepositorySingleton {
 			if (listIterator.next().getEmail().equals(email)) {
 				check = true;
 				throw new IncorrectEmailException("Пользователь с"
-
-				+ " таким email уже введен в базу");
+<<<<<<< HEAD
+						+ " таким email уже введен в базу");
+=======
++ " таким email уже введен в базу");
+>>>>>>> two
 				// break;
 
 			}
@@ -185,6 +158,7 @@ public class EmployeeRepositorySingleton {
 		if (fname.isEmpty() || lname.isEmpty() || email.isEmpty()) {
 			check = true;
 
+			// break;
 
 		}
 
