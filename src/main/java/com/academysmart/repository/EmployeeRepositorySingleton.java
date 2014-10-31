@@ -45,8 +45,8 @@ public class EmployeeRepositorySingleton {
 			while (choiseResult.next()) {
 				newEmployee = new Employee();
 				newEmployee.setId(choiseResult.getInt("id"));
-				newEmployee.setFname(choiseResult.getString("name"));
-				newEmployee.setLname(choiseResult.getString("surname"));
+				newEmployee.setFname(choiseResult.getString("fname"));
+				newEmployee.setLname(choiseResult.getString("lname"));
 				newEmployee.setEmail(choiseResult.getString("email"));
 				employmentlist.add(newEmployee);
 			}
