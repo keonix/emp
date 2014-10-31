@@ -39,7 +39,7 @@ static Connection c;
 			Statement statement =  connect.createStatement();
 					
 			ResultSet 	choiseResult = statement
-					.executeQuery("SELECT * FROM Employee ORDER BY \"id\"");
+					.executeQuery("SELECT * FROM Employee ORDER BY id");
 			while (choiseResult.next()) {
 				Employee newEmployee = new Employee();
 				newEmployee.setId(choiseResult.getInt(1));
